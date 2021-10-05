@@ -1,27 +1,28 @@
-class Bullet {
-  int lives;
-  PVector location;
-  PVector velocity;
-  
-  
+class Bullet extends GameObject {
+
+  int timer;
+
   Bullet() {
-   lives = 1;
-   location = new PVector(myShip.location.x, myShip.location.y);
-   velocity = new PVector(myShip.direction.x, myShip.direction.y);
-   velocity.setMag(10);
+    timer=60;
+    lives = 1;
+    location = new PVector(myShip.location.x, myShip.location.y);
+    velocity = new PVector(myShip.direction.x, myShip.direction.y);
+    velocity.setMag(10);
+    size=10;
   }
-  
+
   void show() {
     stroke(255);
     noFill();
-    ellipse(location.x, location.y, 10, 10);
+    ellipse(location.x, location.y, size, size);
   }
-  
+
   void act() {
-    location.add(velocity);
-    if (location.y < -50) location.y = height+50;
-    if(location.y > height+50) location.y = -50;
-    if (location.x <-50) location.x = width+50;
-    if(location.x>width+50) location.x = -50;
+    super.act();
+    
+    timer --;
+    if (timer <=0) {
+      lives=0;
+    }
   }
 }
