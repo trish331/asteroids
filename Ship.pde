@@ -10,7 +10,7 @@ class Ship extends GameObject {
     velocity = new PVector (0, 0);
     direction = new PVector(0, -0.1);
     shotTimer =0;
-    threshold=60;
+    threshold=30;
   }
   //3. Behaviour functions
   void show() {
@@ -28,6 +28,8 @@ class Ship extends GameObject {
 
   void act() {
     super.act();
+    if(velocity.mag()>5)
+    velocity.setMag(5);
     
     shotTimer++;
     
