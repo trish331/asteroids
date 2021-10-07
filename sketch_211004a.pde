@@ -8,8 +8,22 @@ Ship myShip;
 ArrayList <GameObject> myObjects;
 //setup
 
+//gif variables
+PImage [] gif;
+int numberOfFrames;
+int f;
+
+// mode framework
+int mode;
+final int INTRO = 1;
+final int GAME = 2;
+final int PAUSE =3;
+final int GAMEOVER =4;
+final int RESET = 5;
+
 void setup () {
   size (800, 600);
+  rectMode(CENTER);
   imageMode(CENTER);
   myShip = new Ship();
   myObjects = new ArrayList<GameObject>();
