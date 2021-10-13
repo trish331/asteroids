@@ -5,6 +5,7 @@
 //Variables
 boolean upkey, downkey, leftkey, rightkey, spacekey;
 Ship myShip;
+Ufo myUfo;
 ArrayList <GameObject> myObjects;
 //setup
 
@@ -45,6 +46,7 @@ void setup () {
   myObjects.add(new Asteroid());
   myObjects.add(new Asteroid());
   myObjects.add(new Asteroid());
+  myObjects.add(new Ufo());
 
   lives=3;
 }
