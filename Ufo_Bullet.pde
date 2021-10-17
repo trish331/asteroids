@@ -1,64 +1,28 @@
 class UfoBullet extends GameObject {
-
   int timer;
-int shottimer;
-  UfoBullet() {
-    timer=60;
-    lives = 1;
-    location = new PVector(myUfo.location.x, myUfo.location.y);
-    velocity = new PVector(myShip.direction.x, myShip.direction.y);
-    velocity.setMag(10);
-    velocity.add(myUfo.velocity);
+  UfoBullet () {
+    timer = 100;
     size=10;
-    shottimer =0;
+    location= new PVector(location.x, location.y);
+    velocity = new PVector(myShip.direction.x, myShip.direction.y);
+    velocity.setMag(15);
   }
-
   void show() {
-    stroke(255);
-    noFill();
+    fill(#00E2E8);
+
     ellipse(location.x, location.y, size, size);
   }
-
   void act() {
-    super.act();
-    
-    timer --;
-    if (timer <=0) {
+    location.add(velocity);
+
+    if (dist(location.x, location.y, myShip.location.x, myShip.location.y)<size/2 + myShip.size/2) {
       lives=0;
+      lives = lives-1;
     }
-    if (lives==0){
-       myObjects.add(new Bullet());
-      shottimer=0;
+    timer--;
+    if (timer==0) {
+
+      lives=0;
     }
   }
 }
-
-//class UfoBullet extends GameObject {
-
-//  int timer;
-
-//  UfoBullet() {
-//    timer=80;
-//    lives = 1;
-//    location = new PVector(myShip.location.x, myShip.location.y);
-//    velocity = new PVector(myShip.direction.x, myShip.direction.y);
-//    velocity.setMag(10);
-//    velocity.add(myShip.velocity);
-//    size=10;
-//  }
-
-//  void show() {
-//    stroke(255);
-//    noFill();
-//    ellipse(location.x, location.y, size, size);
-//  }
-
-//  void act() {
-//    super.act();
-    
-//    timer --;
-//    if (timer <=0) {
-//      lives=0;
-//    }
-//  }
-//}
